@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AdForge App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo-wrap">
+        <div class="logo-dot">✦</div>
+        <span>AdForge</span>
+      </div>
+      <nav>
+        <a href="index.html" class="ghost-link">Marketing Site</a>
+      </nav>
+    </header>
+
+    <main class="section app-main">
+      <section class="app-intro card">
+        <h1 class="app-title">AdForge Operating Console</h1>
+        <p>Complete the flow left-to-right: intake → claim bank → offer engine → ad kit → approvals → exports.</p>
+        <div id="statusBadge" class="status-badge">No client profile saved yet.</div>
+      </section>
+
+      <section class="card" id="intake">
+        <h2>1) Client Intake → Niche + Brand + Compliance Snapshot</h2>
+        <form id="intakeForm" class="grid-2">
+          <label>Niche
+            <select name="niche" required>
+              <option value="HVAC">HVAC</option>
+              <option value="Solar">Solar</option>
+              <option value="Dentists">Dentists</option>
+              <option value="Custom">Custom</option>
+            </select>
+          </label>
+          <label>Brand Name<input name="brandName" required /></label>
+          <label>Service Area<input name="serviceArea" placeholder="City / Region" required /></label>
+          <label>Claim Strength
+            <select name="claimStrength">
+              <option>Conservative</option>
+              <option selected>Balanced</option>
+              <option>Assertive</option>
+            </select>
+          </label>
+          <label>Reviews / Social Proof<textarea name="reviews"></textarea></label>
+          <label>Licenses<textarea name="licenses"></textarea></label>
+          <label>Guarantees<textarea name="guarantees"></textarea></label>
+          <label>Financing Notes<textarea name="financing"></textarea></label>
+          <label>Restricted Language Toggles<textarea name="restricted"></textarea></label>
+          <label>Custom No-go Words (comma-separated)<textarea name="noGo"></textarea></label>
+          <button type="submit" class="btn btn-primary">Save Client Profile</button>
+        </form>
+      </section>
+
+      <section class="card" id="claim-bank">
+        <h2>2) Claim Bank (approved-only) + Policy-Safe Mode</h2>
+        <form id="claimForm" class="inline-form">
+          <input id="claimInput" placeholder="Add claim line" required />
+          <select id="claimStatus"><option>Approved</option><option>Rejected</option></select>
+          <button class="btn btn-primary" type="submit">Add Claim</button>
+        </form>
+
+        <div class="policy-tools">
+          <textarea id="policyText" placeholder="Paste copy to risk-check and rewrite"></textarea>
+          <div class="policy-actions">
+            <button id="riskCheckBtn" class="btn btn-secondary" type="button">Run Risk Check</button>
+            <button id="rewriteSaferBtn" class="btn btn-secondary" type="button">Rewrite (Safer)</button>
+            <button id="rewriteStrictBtn" class="btn btn-secondary" type="button">Rewrite (Strict)</button>
+          </div>
+          <p id="riskOutput" class="mono"></p>
+        </div>
+
+        <div id="claimsList" class="list"></div>
+      </section>
+
+      <section class="card" id="offers">
+        <h2>3) Niche Playbook Offer Engine</h2>
+        <button id="generateOffersBtn" class="btn btn-primary" type="button">Generate 2–3 Offer Angles</button>
+        <div id="offersOutput" class="list"></div>
+      </section>
+
+      <section class="card" id="adkit">
+        <h2>4) Ad Kit Builder (6 ads per kit)</h2>
+        <button id="generateKitBtn" class="btn btn-primary" type="button">Build 6-Ad Kit</button>
+        <div id="adKitOutput" class="list"></div>
+      </section>
+
+      <section class="card" id="approval">
+        <h2>5) Revision-Killer Approval Link + Agency Exports</h2>
+        <form id="approvalForm" class="grid-2">
+          <label>Offer Selection<select id="offerSelection"></select></label>
+          <label>Tone
+            <select id="toneSelection">
+              <option>Professional</option>
+              <option>Friendly</option>
+              <option>Urgent</option>
+            </select>
+          </label>
+          <label>Proof Selection<select id="proofSelection"></select></label>
+          <label>Change Type
+            <select id="changeType">
+              <option>Headline tweak</option>
+              <option>CTA tweak</option>
+              <option>Proof line change</option>
+            </select>
+          </label>
+          <label class="full">Short Change Note<textarea id="changeNote"></textarea></label>
+          <div id="claimChecklist" class="full checklist"></div>
+          <button class="btn btn-primary" type="submit">Save Approval Decision</button>
+        </form>
+        <p id="approvalResult" class="mono"></p>
+      </section>
+
+      <section class="card" id="exports">
+        <h2>Exports</h2>
+        <div class="policy-actions">
+          <button id="exportCsvBtn" class="btn btn-secondary" type="button">Export Copy Sheet (CSV)</button>
+          <button id="exportBriefBtn" class="btn btn-secondary" type="button">Export One-page Brief</button>
+          <button id="exportClaimsBtn" class="btn btn-secondary" type="button">Export Approved Claims</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
